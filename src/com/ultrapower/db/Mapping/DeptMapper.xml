@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ultrapower.db.dao.DeptMapper" >
+	<!-- 分页查询所有数据 -->
+	<select id="selectDept" resultType="Dept">
+		select * from Dept where 1=1
+		<if test="department != null ">
+			and department like #{%department_dept%}
+		</if>
+		<if test="email != null">
+			and email like #{%email_name%}
+		</if>
+	</select>
+	<!-- 查询所有 -->
+	<select id="select" resultType="Dept">
+		select * from Dept
+	</select>
+	<!-- 根据部门查询邮件信息 -->
+	<select id="select_Department" resultType="Dept">
+		select email from Dept where department = #{department}
+	</select>
+   	<!--  新增 -->
+   	<insert id="insert" parameterType="Dept">
+		insert into Dept values(#{gerentuanduiId},#{zhanghaoId},
+		#{department},#{email},#{position}, #{employeeName})
+	</insert>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="int">
+		delete from Dept where id=#{id}
+	</delete>
+	<!-- 根据编号查询 -->
+	<select id="selectById" parameterType="int" resultType="Dept">
+		select * from Dept where id=#{id}
+	</select>
+	<!-- 修改 -->
+	<update id="update" parameterType="Dept">
+		update Dept set
+		gerentuanduiId=#{gerentuanduiId}, zhanghaoId=#{zhanghaoId},
+		department=#{department}, email=#{email},
+		position=#{position}, employeeName=#{employeeName} where
+		id=#{id}
+	</update>
+</mapper>
