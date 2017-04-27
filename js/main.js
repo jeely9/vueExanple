@@ -115,8 +115,5 @@ function table(){
 
 
 $(function(){
-	//checkall();    //全选
-	//remove();      //删除整行
-	//change();      //修改信息
 	table();
 })
