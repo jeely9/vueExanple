@@ -1,3 +1,12 @@
+//获取工程路径
+var cur_path = window.document.location.href; 
+var path_name = window.document.location.pathname; 
+var pos_path = cur_path.indexOf(path_name); 
+var localhostPath = cur_path.substring(0,pos_path); 
+var projectName = path_name.substring(0,path_name.substr(1).indexOf('/')+1);
+console.log(projectName);
+console.log(localhostPath+projectName);
+
 function checkall(){
 	$("#checkall").click(function(){
 		var cklist = $(".ck")
